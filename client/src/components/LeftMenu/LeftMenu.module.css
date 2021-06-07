@@ -1,0 +1,15 @@
+.LeftMenu {
+    position: relative;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 242px;
+    background-color: #fff;
+    padding: 15px 0;
+}
+
+.Logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
