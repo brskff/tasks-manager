@@ -1,8 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import {Helmet} from 'react-helmet'
 import classes from './AuthPage.module.css'
+import {tokenVar, userIdVar, loginVar,logoutVar,isAuthenticatedVar} from '../../cache'
+import {useHttp} from "../../hooks/http.hook";
 
 export const AuthPage = () => {
+
+    //TODO Добавить сообщения об ошибке
+    const {loading, error, request, clearError} = useHttp()
     const [form, setForm] = useState({
         email:'', password:''
     })
