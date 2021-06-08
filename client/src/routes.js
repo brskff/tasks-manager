@@ -1,6 +1,7 @@
 import React from "react";
 import {Switch, Route, Redirect} from 'react-router-dom'
 import {TasksPage} from "./pages/TasksPage/TasksPage";
+import {AuthPage} from "./pages/AuthPage/AuthPage";
 
 export const useRoutes = isAuthenticated => {
     if (isAuthenticated) {
@@ -15,7 +16,11 @@ export const useRoutes = isAuthenticated => {
     }
 
     return(
-        <h1>Auth page</h1>
-        //Возврат страницы авторизации
+        <Switch>
+            <Route path="/" exact>
+                <AuthPage />
+            </Route>
+            <Redirect to="/" />
+        </Switch>
     )
 }

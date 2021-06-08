@@ -6,7 +6,7 @@ export const TasksPage = () => {
     return(
         <>
             <Helmet>
-                <title>Задачи</title>
+                <title>📋 Задачи</title>
             </Helmet>
             <div className={classes.TasksPage}>
                 <h2>Задачи</h2>

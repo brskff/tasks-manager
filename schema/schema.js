@@ -1,11 +1,5 @@
 const {GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID} = require('graphql')
-
-const users = [
-    {id: '1', email: 'test@mail.ru', password: '123456'},
-    {id: '2', email: 'test2@mail.ru', password: '123456'},
-    {id: '3', email: 'test3@mail.ru', password: '123456'},
-    {id: '4', email: 'test4@mail.ru', password: '123456'},
-]
+const Users = require('../models/User')
 
 const UserType = new GraphQLObjectType({
     name: 'User',
@@ -16,6 +10,26 @@ const UserType = new GraphQLObjectType({
     })
 })
 
+const Mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+        addUser: {
+            type: UserType,
+            args: {
+                email: {type: GraphQLString},
+                password: {type: GraphQLString}
+            },
+            resolve(parent, args) {
+                const user = new Users({
+                    email: args.email,
+                    password: args.password
+                })
+                return user.save()
+            }
+        }
+    }
+})
+
 const Query = new GraphQLObjectType({
     name: 'Query',
     fields: {
@@ -23,7 +37,7 @@ const Query = new GraphQLObjectType({
             type: UserType,
             args: {id: {type: GraphQLID}},
             resolve(parent, args) {
-                return users.find(user => user.id === args.id)
+                return Users.findById(args.id)
             }
         }
     },
@@ -31,5 +45,6 @@ const Query = new GraphQLObjectType({
 })
 
 module.exports = new GraphQLSchema({
-    query: Query
+    query: Query,
+    mutation: Mutation
 })
