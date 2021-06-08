@@ -15,6 +15,8 @@ const gqlServer = new ApolloServer({
 app.use(express.json({extended: true}))
 app.use(cors())
 
+app.use('/api/auth', require('./routes/auth.routes'))
+
 const PORT = config.get('port') || 5000
 
 async function start() {

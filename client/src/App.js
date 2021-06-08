@@ -8,7 +8,6 @@ import {useAuth} from "./hooks/auth.hook";
 
 function App() {
   const {token, login, logout, userId, ready} = useAuth()
-    console.log(token)
   const isAuthenticated = !!token
   const routes = useRoutes(isAuthenticated)
 

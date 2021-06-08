@@ -23,9 +23,12 @@ export const AuthPage = () => {
 
     const loginHandler = async () => {
         try {
-            console.log('login')
+            // const data = await request('/api/auth/login', 'POST',  {...form})
+            // loginVar(data.token, data.userId)
+            const data = await request('api/auth/testapi', 'POST')
+            console.log(data)
         } catch (e) {
-
+            console.log(e)
         }
     }
 
@@ -71,6 +74,7 @@ export const AuthPage = () => {
                             }
                         </div>
                         <div className={classes.RecoveryPwd}>Забыли пароль?</div>
+                        {/*TODO Заблочить кнопку, пока loading */}
                         <button
                             onClick={loginHandler}
                         >
