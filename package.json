@@ -13,8 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-server-express": "^2.25.0",
     "config": "^3.3.6",
     "express": "^4.17.1",
+    "graphql": "^15.5.0",
     "mongoose": "^5.12.13"
   },
   "devDependencies": {
