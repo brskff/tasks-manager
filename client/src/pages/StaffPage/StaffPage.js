@@ -19,13 +19,21 @@ export const StaffPage = () => {
                 <title>👥 Сотрудники</title>
             </Helmet>
             <div className={classes.StaffPage}>
-                <h1>Сотрудники</h1>
-                <button
-                    onClick={createUserHandler}
-                >Создать сотрудника</button>
-                <button
-                    onClick={createDepartmentHandler}
-                >Создать отдел</button>
+                    <h2>Сотрудники</h2>
+                <div className={classes.StaffPage__wrapper}>
+                    <button
+                        onClick={createUserHandler}
+                    >
+                        <i className="fa fa-plus-circle" aria-hidden="true" style={{fontSize: '18px', marginRight: '7px'}}></i>
+                        Создать сотрудника
+                    </button>
+                    <button
+                        onClick={createDepartmentHandler}
+                    >
+                        <i className="fa fa-plus-circle" aria-hidden="true" style={{fontSize: '18px', marginRight: '7px'}}></i>
+                        Создать отдел
+                    </button>
+                </div>
             </div>
 
         </>

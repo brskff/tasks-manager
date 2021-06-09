@@ -8,8 +8,15 @@
     padding: 15px 0;
 }
 
-.Logo {
-    position: absolute;
+.Logo img {
+    position: relative;
     left: 50%;
     transform: translateX(-50%);
+    margin-bottom: 21px;
+}
+
+
+
+.LeftMenu__menu {
+
 }

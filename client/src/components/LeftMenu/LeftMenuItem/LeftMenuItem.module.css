@@ -1,0 +1,35 @@
+.LeftMenuItem {
+    position: relative;
+    padding-left: 19px;
+    padding-right: 21px;
+}
+
+.LeftMenuItem a {
+    position: relative;
+    color: #8181A5;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    padding-top: 12px;
+    padding-bottom: 15px;
+}
+
+.LeftMenuItem i {
+    position: absolute;
+    left: 13px;
+}
+
+.LeftMenuItem_active {
+    border-right: 2px solid #5E81F4;
+}
+
+.LeftMenuItem_active a {
+    background: linear-gradient(0deg, rgba(94, 129, 244, 0.1), rgba(94, 129, 244, 0.1)), #FFFFFF;
+    border-radius: 4px;
+    color: #1C1D21;
+}
+
+.LeftMenuItem_active i {
+    color: #5E81F4;
+}
