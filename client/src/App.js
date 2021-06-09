@@ -1,4 +1,4 @@
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter as Router} from 'react-router-dom'
 import {LeftMenu} from "./components/LeftMenu/LeftMenu";
 import {useQuery, gql, useApolloClient} from '@apollo/client'
 import {useRoutes} from "./routes";
@@ -15,12 +15,12 @@ function App() {
   const routes = useRoutes(isAuthenticated)
 
   return (
-      <BrowserRouter>
+      <Router>
           <div className="container">
               {isAuthenticated && <LeftMenu />}
               {routes}
           </div>
-      </BrowserRouter>
+      </Router>
   );
 }
 

@@ -87,7 +87,7 @@
     cursor: pointer;
 }
 
-button {
+.LeftSide__wrapper button {
     cursor: pointer;
     color: #fff;
     background-color: #5E81F4;
@@ -99,7 +99,7 @@ button {
     transition: all .2s ease-in-out;
 }
 
-button:hover {
+.LeftSide__wrapper button:hover {
     background-color: #7E9CFD;
 }
 
