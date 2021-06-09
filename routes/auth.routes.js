@@ -6,14 +6,10 @@ const {check, validationResult} = require('express-validator')
 const Users = require('../models/User')
 const router = Router()
 
-router.post('/testapi', async (req, res) => {
-    const pwd = await bcrypt.hash('admin',12)
-    res.json({stat: "KAIF", pwd })
-})
 
 router.post('/login',
     [
-        check('email', 'Введите корректный Email').normalizeEmail().isEmail,
+        check('email', 'Введите корректный Email').normalizeEmail().isEmail(),
         check('password', 'Введите пароль').exists()
     ],
     async (req, res) => {
@@ -29,7 +25,6 @@ router.post('/login',
             }
 
             const {email, password} = req.body
-
             const user = await Users.findOne({email})
 
             if (!user) {
@@ -45,13 +40,14 @@ router.post('/login',
             const token = jwt.sign(
                 {userId: user.id},
                 config.get('jwtSecret'),
-                {expiresIn: '1h'}
+                {expiresIn: '2m'}
             )
 
-            res.json({token, userId: user.id})
+             res.json({token, userId: user.id})
+
 
         } catch (e) {
-            res.status(500).json({message: 'Что то пошло не так, попробуйте снова'})
+             res.status(500).json({message: 'Что то пошло не так, попробуйте снова'})
         }
 
     }

@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import {Helmet} from 'react-helmet'
 import classes from './AuthPage.module.css'
-import {tokenVar, userIdVar, loginVar,logoutVar,isAuthenticatedVar} from '../../cache'
+import {authVar} from '../../cache'
 import {useHttp} from "../../hooks/http.hook";
 
 export const AuthPage = () => {
-
+    const auth = authVar()
     //TODO Добавить сообщения об ошибке
     const {loading, error, request, clearError} = useHttp()
     const [form, setForm] = useState({
@@ -23,10 +23,8 @@ export const AuthPage = () => {
 
     const loginHandler = async () => {
         try {
-            // const data = await request('/api/auth/login', 'POST',  {...form})
-            // loginVar(data.token, data.userId)
-            const data = await request('api/auth/testapi', 'POST')
-            console.log(data)
+            const data = await request('api/auth/login', 'POST',  {...form})
+            auth.login(data.token, data.userId)
         } catch (e) {
             console.log(e)
         }

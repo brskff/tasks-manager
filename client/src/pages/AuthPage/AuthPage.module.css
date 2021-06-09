@@ -56,7 +56,8 @@
 }
 
 .AuthInput input {
-    padding: 17px 0;
+    padding: 17px 5px;
+    padding-right: 20px;
     width: 100%;
     border: none;
     border-bottom: 1px solid #F0F0F3;
@@ -72,7 +73,7 @@
 
 .AuthInput i {
     position: absolute;
-    right: 0;
+    right: 5px;
     top: 50%;
     color: #8181A5;
 }
