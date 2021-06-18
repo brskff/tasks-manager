@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import {Helmet} from 'react-helmet'
 import classes from './AuthPage.module.css'
-import {authVar} from '../../cache'
+import {authVar} from '../../apollo/cache'
 import {useHttp} from "../../hooks/http.hook";
+import {Input} from "../../components/UI/Input/Input";
 
 export const AuthPage = () => {
     const auth = authVar()
@@ -24,7 +25,7 @@ export const AuthPage = () => {
     const loginHandler = async () => {
         try {
             const data = await request('api/auth/login', 'POST',  {...form})
-            auth.login(data.token, data.userId)
+            auth.login(data.token, data.userId, data.role)
         } catch (e) {
             console.log(e)
         }
@@ -44,11 +45,11 @@ export const AuthPage = () => {
                         <h2>Добро пожаловать в СУЗ.</h2>
                         <h4>Введите свои данные чтобы продолжить.</h4>
                         <div className={classes.AuthInput}>
-                            <label htmlFor="email">Email</label>
-                            <input
+                            <Input
                                 type="text"
+                                label="Email"
                                 id="email"
-                                placeholder="Введите email"
+                                placeholder="Введите Email"
                                 name="email"
                                 value={form.email}
                                 onChange={changeHandler}
@@ -58,8 +59,8 @@ export const AuthPage = () => {
                             }
                         </div>
                         <div className={classes.AuthInput}>
-                            <label htmlFor="email">Пароль</label>
-                            <input
+                            <Input
+                                label="Пароль"
                                 type="password"
                                 id="password"
                                 placeholder="Начните вводить ..."
@@ -71,8 +72,6 @@ export const AuthPage = () => {
                                 : <i className="fa fa-lock" aria-hidden="true" style={{color: '#1C1D21'}}></i>
                             }
                         </div>
-                        <div className={classes.RecoveryPwd}>Забыли пароль?</div>
-                        {/*TODO Заблочить кнопку, пока loading */}
                         <button
                             onClick={loginHandler}
                         >

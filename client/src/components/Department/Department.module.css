@@ -1,0 +1,28 @@
+.Department__wrapper {
+    /*max-width: 500px;*/
+    border: 1px solid #5E81F4;
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+.DepartmentName {
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 20px;
+    margin-bottom: 5px;
+
+}
+
+.Department__item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+    margin-bottom: 20px;
+    justify-items: center;
+    padding: 10px 0;
+}
+
+.Department__item:hover {
+    background: linear-gradient(0deg, rgba(94, 129, 244, 0.1), rgba(94, 129, 244, 0.1)), #FFFFFF;;
+}

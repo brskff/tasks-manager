@@ -1,4 +1,5 @@
-.CreateUserPage {
+.UpdateDepartmentPage {
+
     width: 100%;
     background-color: #F5F5FA;
     padding: 28px;
@@ -6,28 +7,27 @@
     padding-left: 270px;
 }
 
-.CreateUserPage h2 {
+.UpdateDepartmentPage h2 {
     font-size: 20px;
     margin-left: 84px;
     margin-bottom: 27px;
 }
 
-.CreateUserPage__wrapper {
+.UpdateDepartmentPage__wrapper {
     background-color: #fff;
     border-radius: 12px;
     padding: 7px 25px;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    /*align-items: center;*/
 }
 
-.CreateUserPage__input {
+.UpdateDepartmentPage__input {
     max-width: 386px;
     margin-bottom: 20px;
 }
 
-.CreateUserPage__button {
+.UpdateDepartmentPage__button {
     width: 147px;
     min-height: 40px;
     margin-right: 21px;

@@ -5,6 +5,8 @@ import {AuthPage} from "./pages/AuthPage/AuthPage";
 import {StaffPage} from "./pages/StaffPage/StaffPage";
 import {CreateUserPage} from "./pages/CreateUserPage/CreateUserPage";
 import {CreateDepartmentPage} from "./pages/CreateDepartmentPage/CreateDepartmentPage";
+import {UpdateDepartmentPage} from "./pages/UpdateDepartmentPage/UpdateDepartmentPage";
+import {AgreementPage} from "./pages/AgreementPage/AgreementPage";
 
 export const useRoutes = isAuthenticated => {
     if (isAuthenticated) {
@@ -12,6 +14,9 @@ export const useRoutes = isAuthenticated => {
             <Switch>
                 <Route path='/tasks' exact>
                     <TasksPage />
+                </Route>
+                <Route path='/agreement' exact>
+                    <AgreementPage />
                 </Route>
                 <Route path='/staff' exact>
                     <StaffPage />
@@ -21,6 +26,9 @@ export const useRoutes = isAuthenticated => {
                 </Route>
                 <Route path='/create/department' exact>
                     <CreateDepartmentPage />
+                </Route>
+                <Route path='/update/department/:id'>
+                    <UpdateDepartmentPage />
                 </Route>
                 <Redirect to="/tasks" />
             </Switch>

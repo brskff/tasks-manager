@@ -1,0 +1,88 @@
+.AgreementPage {
+    width: 100%;
+    background-color: #F5F5FA;
+    padding: 28px;
+    padding-top: 25px;
+    padding-left: 270px;
+}
+
+.AgreementPage h2 {
+    font-size: 20px;
+    margin-left: 84px;
+    margin-bottom: 27px;
+}
+
+.AgreementPage__wrapper {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 25px 25px;
+    margin-bottom: 20px;
+}
+
+.AgreementPage h4 {
+    margin-bottom: 20px;
+}
+
+.AgreementPage__taskwrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 40px;
+    justify-items: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 0;
+}
+
+.AgreementPage__taskwrapper:hover {
+    background: linear-gradient(0deg, rgba(94, 129, 244, 0.1), rgba(94, 129, 244, 0.1)), #FFFFFF;
+}
+
+.AgreementPage__title {
+    font-weight: 700;
+    color: #1C1D21;
+}
+
+.AgreementPage__headerWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 40px;
+    justify-items: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 0;
+    background:  rgba(245, 245, 250, 0.4);
+    color: #8181A5;
+    margin-bottom: 20px;
+}
+
+.AgreementPage__priority {
+    color: #1C1D21;
+    border-radius: 8px;
+    border: 1px solid black;
+    padding: 15px 20px;
+
+}
+
+.AgreementPage__priority_high {
+    border-color: #FF808B;
+}
+
+.AgreementPage__priority_medium{
+    border-color: #F4BE5E;
+}
+
+.AgreementPage__priority_low {
+    border-color: #9698D6;
+}
+
+.AgreementPage__status {
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: #1C1D21;
+}
+
+.AgreementPage__status_agreement {
+    color: #2CE5F6;
+    background: linear-gradient(0deg, rgba(64, 225, 250, 0.1), rgba(64, 225, 250, 0.1)), #FFFFFF;
+}

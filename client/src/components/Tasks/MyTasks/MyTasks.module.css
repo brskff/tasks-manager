@@ -1,0 +1,84 @@
+.MyTask {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 25px 25px;
+    margin-bottom: 20px;
+}
+
+.MyTask h4 {
+    margin-bottom: 20px;
+}
+
+.MyTask__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 40px;
+    justify-items: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 0;
+}
+
+.MyTask__wrapper:hover {
+    background: linear-gradient(0deg, rgba(94, 129, 244, 0.1), rgba(94, 129, 244, 0.1)), #FFFFFF;
+}
+
+.MyTask__title {
+    font-weight: 700;
+    color: #1C1D21;
+}
+
+.MyTask__status {
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: #1C1D21;
+}
+
+.MyTask__status_inprogress {
+    color: #F4BE5E;
+    background: linear-gradient(0deg, rgba(244, 190, 94, 0.1), rgba(244, 190, 94, 0.1)), #FFFFFF;
+}
+
+.MyTask__priority {
+    color: #1C1D21;
+    border-radius: 8px;
+    border: 1px solid black;
+    padding: 15px 20px;
+}
+
+.MyTask__priority_high {
+    border-color: #FF808B;
+}
+
+.MyTask__priority_medium{
+    border-color: #F4BE5E;
+}
+
+.MyTask__titleWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.MyTask__button {
+    min-width: 147px;
+    min-height: 40px;
+    margin-right: 21px;
+    color: #fff;
+    background: #62CA76;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 14px;
+    padding: 13px 16px;
+    text-transform: uppercase;
+}
+
+.MyTask__button:hover {
+    background:  linear-gradient(0deg, rgba(94, 129, 244, 0.1), rgba(94, 129, 244, 0.1)), #FFFFFF;
+    color: #5E81F4;
+}

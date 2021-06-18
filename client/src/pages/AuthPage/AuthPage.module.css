@@ -46,25 +46,26 @@
     position: relative;
     max-width: 386px;
     width: 100%;
-    margin-bottom: 23px;
+    /*margin-bottom: 23px;*/
+    margin-bottom: 35px;
 }
 
-.AuthInput label {
-    color: #8181A5;
-    font-size: 14px;
-    font-weight: normal;
-}
+/*.AuthInput label {*/
+/*    color: #8181A5;*/
+/*    font-size: 14px;*/
+/*    font-weight: normal;*/
+/*}*/
 
-.AuthInput input {
-    padding: 17px 5px;
-    padding-right: 20px;
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #F0F0F3;
-    color: #1C1D21;
-    font-weight: 700;
-    font-size: 14px;
-}
+/*.AuthInput input {*/
+/*    padding: 17px 5px;*/
+/*    padding-right: 20px;*/
+/*    width: 100%;*/
+/*    border: none;*/
+/*    border-bottom: 1px solid #F0F0F3;*/
+/*    color: #1C1D21;*/
+/*    font-weight: 700;*/
+/*    font-size: 14px;*/
+/*}*/
 
 
 .AuthInput input::placeholder {

@@ -1,0 +1,83 @@
+.AgreeTask__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.AgreeTask {
+    background-color: #fff;
+    width: 50%;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.AgreeTask h4 {
+    font-size: 18px;
+    color: #1C1D21;
+    margin-bottom: 20px;
+}
+
+.AgreeTask__title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.AgreeTask__buttonWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.AgreeTask__button {
+    min-width: 147px;
+    min-height: 40px;
+    margin-right: 21px;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 14px;
+    padding: 13px 16px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.AgreeTask__button_success:hover {
+    background:  #FFF;
+    color: #1C1D21;
+}
+
+.AgreeTask__button_cancel:hover {
+    background: #FFF;
+    color: #1C1D21;
+}
+
+.AgreeTask__button_warning:hover {
+    background: #FFF;
+    color: #1C1D21;
+}
+
+.AgreeTask__button_success {
+    background: #62CA76;
+    border: 2px solid #62CA76;
+}
+
+.AgreeTask__button_warning {
+    background: #FDDE69;
+    border: 2px solid #FDDE69;
+}
+
+.AgreeTask__button_cancel {
+    background: #E45851;
+    border: 2px solid #E45851;
+}

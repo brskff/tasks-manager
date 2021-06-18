@@ -4,10 +4,10 @@ import './index.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {ApolloClient, ApolloProvider} from '@apollo/client'
-import {cache} from "./cache";
+import {cache} from "./apollo/cache";
 
 const client = new ApolloClient({
-    uri: '//:localhost:5000/graphql',
+    uri: 'http://localhost:5000/graphql',
     cache
 })
 

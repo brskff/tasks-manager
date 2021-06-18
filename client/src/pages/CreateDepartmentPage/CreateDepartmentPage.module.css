@@ -1,4 +1,45 @@
 .CreateDepartmentPage {
+
     width: 100%;
     background-color: #F5F5FA;
+    padding: 28px;
+    padding-top: 25px;
+    padding-left: 270px;
+}
+
+.CreateDepartmentPage h2 {
+    font-size: 20px;
+    margin-left: 84px;
+    margin-bottom: 27px;
+}
+
+.CreateDepartmentPage__wrapper {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 7px 25px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.CreateDepartmentPage__input {
+    max-width: 386px;
+    margin-bottom: 20px;
+}
+
+.CreateDepartmentPage__button {
+    width: 147px;
+    min-height: 40px;
+    margin-right: 21px;
+    color: #fff;
+    background: linear-gradient(0deg, #5E81F4, #5E81F4), #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 14px;
+    padding: 13px 16px;
+    text-transform: uppercase;
 }

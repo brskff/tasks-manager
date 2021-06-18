@@ -7,3 +7,4 @@ const schema = new Schema({
 })
 
 module.exports = model('Department', schema)
+
