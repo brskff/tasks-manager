@@ -1,7 +1,14 @@
 import React from "react";
 import classes from './TasksQueue.module.css'
+import {useQuery} from "@apollo/client";
+import {QUEUE_TASKS} from "../../../apollo/queries";
+import {authVar} from "../../../apollo/cache";
 
 export const TasksQueue = () => {
+    const auth = authVar()
+    const {loading, error, data} = useQuery(QUEUE_TASKS, {variables: {userId: auth.userId}, fetchPolicy: 'network-only', pollInterval: 500})
+
+    if (loading) return 'Loading'
 
     return(
         <div className={classes.TasksQueue}>
@@ -18,12 +25,17 @@ export const TasksQueue = () => {
                 <div >Статус</div>
                 <div >Приоритет</div>
             </div>
-            {/*<div className={classes.TasksQueue__wrapper}>*/}
-            {/*    <div className={classes.TasksQueue__title}>Получить диплом</div>*/}
-            {/*    <div className={classes.TasksQueue__title}>Рыбкин Сергей Денисович</div>*/}
-            {/*    <div className={classes.TasksQueue__status + ' ' + classes.TasksQueue__status_inpqueue}>В очереди</div>*/}
-            {/*    <div className={classes.TasksQueue__priority + ' ' + classes.TasksQueue__priority_high}>Высокий</div>*/}
-            {/*</div>*/}
+            {data.queueTasks.map(el => {
+                const classesPriority = el.priority == 1 ? classes.TasksQueue__priority_low : el.priority == 2 ? classes.TasksQueue__priority_medium : classes.TasksQueue__priority_high
+                return(
+                    <div className={classes.TasksQueue__wrapper}>
+                        <div className={classes.TasksQueue__title}>{el.title}</div>
+                        <div className={classes.TasksQueue__title}>{el.from.user.fio}</div>
+                        <div className={classes.TasksQueue__status + ' ' + classes.TasksQueue__status_inqueue}>В очереди</div>
+                        <div className={classes.TasksQueue__priority + ' ' + classesPriority}>{el.priority == 1 ? 'Низкий' : el.priority == 2 ? 'Средний' : 'Высокий'}</div>
+                    </div>
+                )
+            })}
 
         </div>
     )

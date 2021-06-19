@@ -98,5 +98,93 @@ export const GET_AGREEMENT_TASKS = gql `
 }
 `
 
+export const MY_TASK = gql `
+    query($userId: ID) {
+        myTask(userId:$userId) {
+            id
+            title
+            status
+            priority
+            from {
+                user {
+                    fio
+                }
+            }
+        }
+    }
+`
+
+export const DELIVERED_TASKS = gql `
+    query($userId: ID) {
+        deliveredTasks(userId: $userId) {
+            id
+            title
+            status
+            priority
+            to{
+                user {
+                    fio
+                }
+            }
+        }
+    }
+`
+
+export const QUEUE_TASKS = gql `
+    query($userId: ID) {
+        queueTasks(userId: $userId) {
+            id
+            title
+            status
+            priority
+            from{
+                user {
+                    fio
+                }
+            }
+        }
+    }
+`
+
+export const GET_TASK = gql `
+    query($id: ID) {
+task(id:$id) {
+    id
+    status
+    text
+    title
+    from {
+      user {
+        fio
+      }
+      department {
+        name
+      }
+    }
+    to{
+      user{
+        fio
+      }
+      department{
+        id
+        name
+        curator{
+          id
+          fio
+        }
+        staff{
+          id
+          fio
+        }
+      }
+    }
+    signature{
+      chief
+      curator
+    }
+  }
+}
+`
+
 
 

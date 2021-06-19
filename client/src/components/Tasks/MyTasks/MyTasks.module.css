@@ -51,6 +51,10 @@
     border-color: #FF808B;
 }
 
+.MyTask__priority_low {
+    border-color: #9698D6;
+}
+
 .MyTask__priority_medium{
     border-color: #F4BE5E;
 }

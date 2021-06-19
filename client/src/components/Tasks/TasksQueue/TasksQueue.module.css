@@ -73,6 +73,11 @@
     border-color: #F4BE5E;
 }
 
+.TasksQueue__priority_low {
+    border-color: #9698D6;
+}
+
+
 .TasksQueue__titleWrapper {
     display: flex;
     justify-content: space-between;

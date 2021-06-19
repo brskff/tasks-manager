@@ -62,6 +62,11 @@
     background: #F5F5FA;
 }
 
+.DeliveredTasks__status_canceled {
+    color: #8181A5;
+    background: #F5F5FA;
+}
+
 /*.DeliveredTasks__status_inpqueue {*/
 /*    color: #8181A5;*/
 /*    background: #F5F5FA;*/
@@ -80,6 +85,11 @@
 
 .DeliveredTasks__priority_medium {
     border-color: #F4BE5E;
+}
+
+
+.DeliveredTasks__priority_low {
+    border-color: #9698D6;
 }
 
 .DeliveredTasks__titleWrapper {

@@ -23,7 +23,6 @@ export const UpdateDepartmentPage = (props) => {
     useEffect(() => {
 
         if (data) {
-            console.log(data.department.name)
             setForm({...form, name: data.department.name, chief: data.department.chief ? {id: data.department.chief.id, name: data.department.chief.name} : {id: '', name: ''}, staff: data.department.staff.map(candidate =>  ({id: candidate.id, name:candidate.fio})), curators: data.department.curators.map(curator =>  ({id: curator.id, name:curator.fio}))})
         }
     }, [loading, data])

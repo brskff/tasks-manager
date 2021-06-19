@@ -165,6 +165,73 @@ const Mutation = new GraphQLObjectType({
                     {new: true}
                 )
             }
+        },
+        confirmTaskFromChief: {
+            type: TaskType,
+            args: {
+                id: {type: GraphQLID},
+                executor: {type: GraphQLID}
+            },
+            resolve(parent, args) {
+                return Tasks.findByIdAndUpdate(
+                    args.id,
+                    {$set: {'to.user': args.executor, 'signature.chief': true, status: 'В очереди'}},
+                    {new: true}
+                )
+            }
+        },
+        confirmTaskFromCurator: {
+            type: TaskType,
+            args: {
+                id: {type: GraphQLID}
+            },
+            resolve(parent, args) {
+                return Tasks.findByIdAndUpdate(
+                    args.id,
+                    {$set: { 'signature.curator': true, status: 'В очереди'}},
+                    {new: true}
+                )
+            }
+        },
+        cancelTaskFromChief: {
+            type: TaskType,
+            args: {
+                id: {type: GraphQLID}
+            },
+            resolve(parent, args) {
+                return Tasks.findByIdAndUpdate(
+                    args.id,
+                    {$set: { status: 'Отменено начальником отдела'}},
+                    {new: true}
+                )
+            }
+        },
+        cancelTaskFromCurator: {
+            type: TaskType,
+            args: {
+                id: {type: GraphQLID}
+            },
+            resolve(parent, args) {
+                return Tasks.findByIdAndUpdate(
+                    args.id,
+                    {$set: { status: 'Отменено куратором'}},
+                    {new: true}
+                )
+            }
+        },
+        sendTaskToCurator: {
+            type: TaskType,
+            args: {
+                id: {type: GraphQLID},
+                executor: {type: GraphQLID}
+            },
+            resolve(parent, args) {
+                return Tasks.findByIdAndUpdate(
+                    args.id,
+                    {$set: {'to.user': args.executor, 'signature.chief': true, status: 'Согласование'}},
+                    {new: true}
+                )
+            }
         }
     }
 })
@@ -206,6 +273,41 @@ const Query = new GraphQLObjectType({
                 return Tasks.findById(args.id)
             }
         },
+        myQueueTask: {
+            type: TaskType,
+            args: {userId: {type: GraphQLID}},
+            resolve(parent, args) {
+                return Tasks.find({'to.user': args.userId, status: 'В очереди'} )
+            }
+        },
+        myTask: {
+            type: TaskType,
+            args: {userId: {type: GraphQLID}},
+            resolve(parent, args) {
+                return Tasks.findOne({'to.user': args.userId, status: 'Выполняется'})
+            }
+        },
+        deliveredTasks: {
+          type: new GraphQLList(TaskType),
+          args: {userId: {type: GraphQLID}},
+          async resolve(parent, args) {
+              const tasks = []
+              const allTasks = await Tasks.find({'from.user': args.userId}).sort({priority: -1})
+              allTasks.map(el => {
+                  if (el.status !== 'Отменено начальником отдела' && el.status !=='Отменено куратором') {
+                      tasks.push(el)
+                  }
+              })
+              return tasks
+          }
+        },
+        queueTasks: {
+            type: new GraphQLList(TaskType),
+            args: {userId: {type: GraphQLID}},
+            resolve(parent, args){
+                return Tasks.find({'to.user': args.userId, status: 'В очереди'})
+            }
+        },
         agreementTask: {
             type: new GraphQLList(TaskType),
             args: {userId: {type: GraphQLID}},
@@ -219,7 +321,7 @@ const Query = new GraphQLObjectType({
 
                 const curatorAgreement = await Tasks.find({status: 'Согласование', 'signature.chief': true}).populate({path: 'to.department'})
                 curatorAgreement.map(el => {
-                    if (args.userId == el.to.department.chief) {
+                    if (args.userId == el.to.department.curator) {
                         tasks.push(el)
                     }
                 })
