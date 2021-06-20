@@ -1,15 +1,21 @@
 import React from "react";
 import classes from './MyTasks.module.css'
-import {useQuery} from "@apollo/client";
+import {useMutation, useQuery} from "@apollo/client";
 import {MY_TASK} from "../../../apollo/queries";
 import {authVar} from "../../../apollo/cache";
+import {OK_TASK} from "../../../apollo/mutations";
 
 export const MyTasks = () => {
     const auth = authVar()
 
     const {loading, error, data} = useQuery(MY_TASK, {variables: {userId: auth.userId}, pollInterval: 500})
+    const [okTask] = useMutation(OK_TASK)
 
     if (loading) return 'Loading'
+
+    const okHandler = () => {
+        okTask({variables:{id: data.myTask.id}})
+    }
 
     let classesPriority = ''
 
@@ -21,7 +27,7 @@ export const MyTasks = () => {
             <div className={classes.MyTask__titleWrapper}>
                 <h4>Текущая задача</h4>
                 <div>
-                    {data.myTask && <div className={classes.MyTask__button}><i className="fa fa-check-square-o" aria-hidden="true" style={{marginRight:'20px'}}></i>Выполнено</div>}
+                    {data.myTask && <div className={classes.MyTask__button} onClick={okHandler}><i className="fa fa-check-square-o" aria-hidden="true" style={{marginRight:'20px'}}></i>Выполнено</div>}
                 </div>
             </div>
             {data.myTask && <div className={classes.MyTask__wrapper}>

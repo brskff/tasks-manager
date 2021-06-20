@@ -250,6 +250,19 @@ const Mutation = new GraphQLObjectType({
                     )
                 }
             }
+        },
+        okTask: {
+            type: TaskType,
+            args: {
+                id: {type: GraphQLID}
+            },
+            resolve(parent, args) {
+                return Tasks.findByIdAndUpdate(
+                    args.id,
+                    {$set: {status: 'Выполнено'}},
+                    {new: true}
+                )
+            }
         }
     }
 })
@@ -312,7 +325,7 @@ const Query = new GraphQLObjectType({
               const tasks = []
               const allTasks = await Tasks.find({'from.user': args.userId}).sort({priority: -1})
               allTasks.map(el => {
-                  if (el.status !== 'Отменено начальником отдела' && el.status !=='Отменено куратором') {
+                  if (el.status !== 'Отменено начальником отдела' && el.status !=='Отменено куратором' && el.status !== 'Выполнено') {
                       tasks.push(el)
                   }
               })

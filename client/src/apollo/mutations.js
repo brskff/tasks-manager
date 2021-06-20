@@ -63,3 +63,11 @@ export const TAKE_TASK = gql `
     }
 `
 
+export const OK_TASK = gql `
+    mutation($id: ID){
+        okTask(id: $id){
+            id
+        }
+    }
+`
+

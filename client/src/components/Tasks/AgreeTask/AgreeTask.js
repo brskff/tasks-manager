@@ -12,7 +12,7 @@ import {
 
 export const AgreeTask = (props) => {
     const [executor, setExecutor] = useState('')
-    const {loading, error, data} = useQuery(GET_TASK, {variables:{id: props.taskId}})
+    const {loading, error, data} = useQuery(GET_TASK, {variables:{id: props.taskId}, fetchPolicy: 'network-only'})
     const [confirmFromChief] = useMutation(CONFIRM_TASK_FROM_CHIEF)
     const [confirmFromCurator] = useMutation(CONFIRM_TASK_FROM_CURATOR)
     const [cancelFromChief] = useMutation(CANCEL_TASK_FROM_CHIEF)
