@@ -232,6 +232,24 @@ const Mutation = new GraphQLObjectType({
                     {new: true}
                 )
             }
+        },
+        takeTask: {
+            type: TaskType,
+            args: {
+                id: {type: GraphQLID},
+                userId: {type: GraphQLID}
+            },
+            async resolve(parent, args) {
+                const activeTask = await Tasks.findOne({'to.user': args.userId, status: 'Выполняется'})
+
+                if (!activeTask) {
+                    return Tasks.findByIdAndUpdate(
+                        args.id,
+                        {$set: { status: 'Выполняется'}},
+                        {new: true}
+                    )
+                }
+            }
         }
     }
 })

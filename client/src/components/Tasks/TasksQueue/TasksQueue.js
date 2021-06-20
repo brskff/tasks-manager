@@ -1,12 +1,18 @@
 import React from "react";
 import classes from './TasksQueue.module.css'
-import {useQuery} from "@apollo/client";
+import {useMutation, useQuery} from "@apollo/client";
 import {QUEUE_TASKS} from "../../../apollo/queries";
 import {authVar} from "../../../apollo/cache";
+import {TAKE_TASK} from "../../../apollo/mutations";
 
 export const TasksQueue = () => {
     const auth = authVar()
     const {loading, error, data} = useQuery(QUEUE_TASKS, {variables: {userId: auth.userId}, fetchPolicy: 'network-only', pollInterval: 500})
+    const [takeTask] = useMutation(TAKE_TASK)
+
+    const getTask = () => {
+        takeTask({variables: {id: data.queueTasks[0].id, userId: auth.userId}})
+    }
 
     if (loading) return 'Loading'
 
@@ -15,7 +21,7 @@ export const TasksQueue = () => {
             <div className={classes.TasksQueue__titleWrapper}>
                 <h4>Очередь задач</h4>
                 <div style={{display: "flex"}}>
-                    <div className={classes.TasksQueue__button}><i className="fa fa-get-pocket" aria-hidden="true" style={{marginRight:'20px'}}></i>Взять задачу</div>
+                    {data.queueTasks.length > 0 && <div className={classes.TasksQueue__button} onClick={getTask}><i className="fa fa-get-pocket" aria-hidden="true" style={{marginRight:'20px'}}></i>Взять задачу</div>}
                     <div className={classes.TasksQueue__button}><i className="fa fa-history" aria-hidden="true" style={{marginRight:'20px'}}></i>История задач</div>
                 </div>
             </div>

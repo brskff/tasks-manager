@@ -55,4 +55,11 @@ export const CANCEL_TASK_FROM_CURATOR = gql `
         }
     }
 `
+export const TAKE_TASK = gql `
+    mutation($id: ID, $userId: ID){
+        takeTask(id: $id, userId: $userId){
+            id
+        }
+    }
+`
 

@@ -11,7 +11,11 @@ export const MyTasks = () => {
 
     if (loading) return 'Loading'
 
-    const classesPriority = data.myTask.priority == 1 ? classes.MyTaske__priority_low : data.myTask.priority == 2 ? classes.MyTask__priority_medium : classes.MyTask__priority_high
+    let classesPriority = ''
+
+    if (data.myTask) {
+        classesPriority = data.myTask.priority == 1 ? classes.MyTaske__priority_low : data.myTask.priority == 2 ? classes.MyTask__priority_medium : classes.MyTask__priority_high
+    }
     return(
         <div className={classes.MyTask}>
             <div className={classes.MyTask__titleWrapper}>
